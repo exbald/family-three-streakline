@@ -44,7 +44,7 @@ function seed() {
       runs.push({ id: "seed-" + w + "-" + i, date, km, min });
     }
   }
-  const recent = [[0, 5.2, 27], [1, 8.0, 42], [2, 4.5, 24]];
+  const recent = [[0, 5.2, 27], [1, 8.0, 42], [2, 4.5, 24], [3, 6.1, 31], [4, 4.8, 25], [5, 7.4, 38]];
   for (const r of recent) {
     runs.push({ id: "recent-" + r[0], date: daysAgoISO(r[0]), km: r[1], min: r[2] });
   }
@@ -57,17 +57,29 @@ function weekKm(runs, ws) {
   for (const r of runs) if (weekStart(r.date) === ws) sum += r.km;
   return sum;
 }
-function currentStreak(runs) {
+function currentStreak(runs) { return streakDates(runs).length; }
+function streakDates(runs) {
   const days = new Set(runs.map(r => r.date));
-  let streak = 0;
+  const out = [];
   let d = daysAgoISO(0);
   if (!days.has(d)) d = daysAgoISO(1);
-  if (!days.has(d)) return 0;
+  if (!days.has(d)) return out;
   while (days.has(d)) {
-    streak++;
+    out.push(d);
     d = iso(addDays(fromISO(d), -1));
   }
-  return streak;
+  return out.reverse(); // oldest → newest
+}
+function bestStreak(runs) {
+  const days = [...new Set(runs.map(r => r.date))].sort();
+  let best = 0, cur = 0, prev = null;
+  for (const date of days) {
+    if (prev !== null && (fromISO(date) - fromISO(prev)) === 86400000) cur++;
+    else cur = 1;
+    if (cur > best) best = cur;
+    prev = date;
+  }
+  return best;
 }
 
 /* ---- chart ---- */
@@ -119,6 +131,8 @@ function renderChart(runs) {
 
 /* ---- tooltip ---- */
 function renderTooltip(runs, weeks) {
+  if ($("chart").dataset.tipBound) return;
+  $("chart").dataset.tipBound = "1";
   const tip = $("tooltip");
   const svg = $("chart");
   const list = svg.querySelectorAll(".hit");
@@ -192,7 +206,27 @@ function renderAll(runs) {
   } else {
     sub.textContent = "no data for last week";
   }
-  $("streak").textContent = currentStreak(runs);
+  const streakDays = streakDates(runs);
+  $("streakBig").textContent = streakDays.length;
+  $("bestStreak").textContent = bestStreak(runs);
+  $("streakBest").innerHTML = "best: <b>" + bestStreak(runs) + "</b> days";
+  const strip = $("streakStrip");
+  if (!streakDays.length) {
+    strip.innerHTML = '<span class="none">no active streak — log a run today to start one</span>';
+  } else {
+    strip.innerHTML = streakDays.map(function (date) {
+      const d = fromISO(date);
+      const dw = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"][d.getDay()];
+      const today = date === today;
+      return '<div class="day' + (today ? " today" : "") + '">' +
+        '<div class="dw">' + dw + '</div>' +
+        '<div class="dn">' + date.slice(8) + '</div>' +
+        '</div>';
+    }).join("");
+  }
+  $("streakSpan").textContent = streakDays.length
+    ? streakDays[0].slice(5).replace("-", "/") + " → " + streakDays[streakDays.length - 1].slice(5).replace("-", "/")
+    : "—";
   let avg = 0;
   for (let i = 1; i <= 4; i++) avg += weekKm(runs, weekStart(daysAgoISO(i * 7)));
   $("avgKm").textContent = fmt(avg / 4);
