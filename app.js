@@ -217,8 +217,8 @@ function renderAll(runs) {
     strip.innerHTML = streakDays.map(function (date) {
       const d = fromISO(date);
       const dw = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"][d.getDay()];
-      const today = date === today;
-      return '<div class="day' + (today ? " today" : "") + '">' +
+      const isToday = date === today;
+      return '<div class="day' + (isToday ? " today" : "") + '">' +
         '<div class="dw">' + dw + '</div>' +
         '<div class="dn">' + date.slice(8) + '</div>' +
         '</div>';
