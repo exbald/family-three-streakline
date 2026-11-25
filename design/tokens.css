@@ -1,0 +1,64 @@
+/* Streakline design tokens — extracted from the app's real CSS values */
+:root {
+  /* colour */
+  --color-bg: #0b0d10;
+  --color-surface: #12151a;
+  --color-surface-2: #181c23;
+  --color-line: #232830;
+  --color-ink: #e6e9ee;
+  --color-ink-2: #9aa3b2;
+  --color-ink-3: #5b6472;
+  --color-accent: #82c91e;
+  --color-accent-mark: #66a80f;
+  --color-accent-dim: #4a6b1c;
+  --color-accent-soft: rgba(130, 201, 30, .08);
+  --color-warning: #e6a23c;
+  --color-on-accent: #0b0d10;
+
+  /* font */
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  /* type scale (px) */
+  --text-2xs: 9px;
+  --text-xs: 10px;
+  --text-sm: 11px;
+  --text-base: 12px;
+  --text-md: 13px;
+  --text-lg: 15px;
+  --text-unit: 16px;
+  --text-value: 30px;
+  --text-value-sm: 26px;
+  --text-hero: 64px;
+
+  /* tracking */
+  --track-label: .14em;
+  --track-title: .18em;
+  --track-number: -.02em;
+  --track-hero: -.03em;
+
+  /* space (px) */
+  --space-1: 3px;
+  --space-2: 4px;
+  --space-3: 6px;
+  --space-4: 7px;
+  --space-5: 8px;
+  --space-6: 10px;
+  --space-7: 12px;
+  --space-8: 14px;
+  --space-9: 16px;
+  --space-10: 20px;
+  --space-11: 48px;
+  --padding-panel: 12px;
+  --padding-tile: 10px 12px 12px;
+  --padding-banner: 14px 16px 12px;
+
+  /* radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+
+  /* shadow */
+  --shadow-tip: 0 4px 16px rgba(0, 0, 0, .5);
+
+  /* misc */
+  --hover-brightness: 1.08;
+}

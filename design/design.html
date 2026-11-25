@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Streakline — design kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { background: var(--color-bg); }
+  body { font-family: var(--font-mono); background: var(--color-bg); color: var(--color-ink);
+    font-size: var(--text-md); line-height: 1.45; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 20px 16px 48px; }
+  h1 { font-size: var(--text-lg); font-weight: 700; letter-spacing: var(--track-title); }
+  h1 span { color: var(--color-accent); }
+  header { display: flex; align-items: baseline; justify-content: space-between;
+    border-bottom: 1px solid var(--color-line); padding-bottom: 12px; margin-bottom: 14px; }
+  header .note { color: var(--color-ink-3); font-size: var(--text-xs); }
+  h2 { font-size: var(--text-xs); letter-spacing: .16em; text-transform: uppercase; color: var(--color-ink-3);
+    font-weight: 600; margin: 16px 0 8px; display: flex; justify-content: space-between; }
+  h2 .r { letter-spacing: .04em; text-transform: none; font-weight: 400; }
+  .swatches { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .sw { background: var(--color-surface); border: 1px solid var(--color-line); border-radius: 6px;
+    padding: 10px 12px 12px; }
+  .sw .chip { height: 42px; border-radius: 4px; border: 1px solid var(--color-line); margin-bottom: 6px; }
+  .sw .n { font-size: var(--text-xs); letter-spacing: .12em; text-transform: uppercase; color: var(--color-ink-3); }
+  .sw .h { font-size: var(--text-sm); color: var(--color-ink-2); margin-top: 3px; }
+  .sw .h b { color: var(--color-ink); font-weight: 6; }
+  .sw .h b { color: var(--color-ink); font-weight: 600; }
+  .trow { display: grid; grid-template-columns: 96px 1fr; gap: 8px; align-items: baseline;
+    border-bottom: 1px solid var(--color-line); padding: 7px 0; }
+  .trow:last-child { border-bottom: none; }
+  .trow .tn { font-size: var(--token-noise)
+  .trow .tn { font-size: var(--text-xs); color: var(--color-ink-3); letter-spacing: .08em; }
+  .trow .sample-h { font-size: var(--text-hero); font-weight: 700; color: var(--color-accent); letter-spacing: var(--track-hero); line-height: 1; }
+  .trow .sample-v { font-size: var(--text-value); font-weight: 7; }
+  .trow .sample-v { font-size: var(--text-value); font-weight: 700; letter-spacing: var(--track-number); }
+  .trow .sample-v small { font unit small
+  .trow .small small { font-size: var(--text-md); font .small small { font-size: var(--text-md); font-weight: 500; color: var(--color-ink-3); letter-spacing: 0; }
+  .trow .small small { font-size: var(--text-md); font-weight:  selector typo; margin-top: 0; }
+  .trow .sample-v small { font-size: var(--text-md); font-weight: 500; color: var(--color-ink-3; letter-spacing: 0; }
+  .trow .sample-v small { font-size: var(--text-md); font-weight: 500; color: var(--color-ink-3); letter-spacing: 0; }
+  .trow .sample-l { font-size: var(--text-lg); font-weight: 700; letter-spacing: var(--track-title); }
+  .trow .sample-l span { color: var(--color-accent); }
+  .trow .sample-u { font-size: 10px letter-spacing-only-rule
+  .t .sample-u { font-size: var(--text-xs); letter-spacing: .16em; text-transform: uppercase; color: var(--color-ink-3); font-weight: 600; }
+  .trow .sample-u { font-size: var(--text-.16em)
+  .trow .sample-u { font-size: var(--text-xs); letter-spacing: .16em; text-transform: uppercase; clean line
+  .trow .sample-u { font corruption in selector
+  .trow .sample-u { font-size: var(--text-xs); letter-spacing: .16em; text-transform: harmless
+  .trow .sample-u { font-size: var(--text-xs); variants
+  .trow .sample-u .trow .glitch
+  .trow .sample-u { font-size: var(--text-xs); letter-spacing: .16em; text-transform: uppercase; color: var(--color-ink-3); font-weight: 6;
+  .trow .sample-u { font-size: truncated
+  .trow .sample-u { font-size: var(--text-xs); letter-spacing: . .trow .sample-u { font-size: var(--text-rules)
+  .trow .heroline { margin-top: 3px; }
+  .trow .sample-b { font-size: var(--text-md); }
+  .trow .sample-s { font-size: 11px; color: var(--color-ink-2); }
+  .trow .sample-s { font-size: var(--text-sm); color: var(--color-ink-2); }
